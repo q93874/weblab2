@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Map vs Object</title>
+</head>
+<body>
+  <button id="mapButton">Map Example</button>
+  <button id="objectButton">Object Example</button>
+  <div id="output"></div>
+
+  <script>
+    var mapButton = document.getElementById("mapButton");
+    var objectButton = document.getElementById("objectButton");
+    var outputDiv = document.getElementById("output");
+
+    mapButton.addEventListener("click", function() {
+      var myMap = new Map();
+      myMap.set("key1", "value1");
+      myMap.set("key2", "value2");
+      myMap.set("key3", "value3");
+
+      outputDiv.innerText = "Map: " + myMap.get("key2");
+    });
+
+    objectButton.addEventListener("click", function() {
+      var myObject = {
+        key1: "value1",
+        key2: "value2",
+        key3: "value3"
+      };
+
+      outputDiv.innerText = "Object: " + myObject.key2;
+    });
+  </script>
+</body>
+</html>

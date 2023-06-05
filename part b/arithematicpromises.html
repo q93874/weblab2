@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Arithmetic Operations</title>
+</head>
+<body>
+  <button id="calculateButton">Calculate</button>
+  <div id="output"></div>
+
+  <script>
+    var calculateButton = document.getElementById("calculateButton");
+    var outputDiv = document.getElementById("output");
+
+    calculateButton.addEventListener("click", function() {
+      performOperations()
+        .then(function(results) {
+          outputDiv.innerText = "Results: " + results.join(", ");
+        })
+        .catch(function(error) {
+          outputDiv.innerText = "Error: " + error;
+          console.error(error);
+        });
+    });
+
+    function performOperations() {
+      return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+          var operations = [
+            add(5, 3),
+            subtract(10, 4),
+            multiply(6, 2),
+            divide(20, 5)
+          ];
+
+          resolve(operations);
+        }, 2000);
+      });
+    }
+
+    function add(a, b) {
+      return a + b;
+    }
+
+    function subtract(a, b) {
+      return a - b;
+    }
+
+    function multiply(a, b) {
+      return a * b;
+    }
+
+    function divide(a, b) {
+      return a / b;
+    }
+  </script>
+</body>
+</html>

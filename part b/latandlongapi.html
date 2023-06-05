@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Get Latitude and Longitude</title>
+</head>
+<body>
+  <button id="locationButton">Get Location</button>
+  <div id="output"></div>
+
+  <script>
+    var locationButton = document.getElementById("locationButton");
+    var outputDiv = document.getElementById("output");
+
+    locationButton.addEventListener("click", function() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            outputDiv.innerText = "Latitude: " + latitude + ", Longitude: " + longitude;
+          },
+          function(error) {
+            outputDiv.innerText = "Error getting location: " + error.message;
+            console.error(error);
+          }
+        );
+      } else {
+        outputDiv.innerText = "Geolocation is not supported by this browser.";
+      }
+    });
+  </script>
+</body>
+</html>

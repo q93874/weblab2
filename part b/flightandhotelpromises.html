@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Flight and Hotel</title>
+</head>
+<body>
+  <button id="bookButton">Book</button>
+  <div id="output"></div>
+
+  <script>
+    var bookButton = document.getElementById("bookButton");
+    var outputDiv = document.getElementById("output");
+
+    bookButton.addEventListener("click", function() {
+      bookFlight()
+        .then(function() {
+          return bookHotel();
+        })
+        .then(function() {
+          outputDiv.innerText = "Flight and hotel booked successfully";
+        })
+        .catch(function(error) {
+          outputDiv.innerText = error;
+          console.error(error);
+        });
+    });
+
+    function bookFlight() {
+      return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+          resolve();
+        }, 2000);
+      });
+    }
+
+    function bookHotel() {
+      return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+          resolve();
+        }, 1000);
+      });
+    }
+  </script>
+</body>
+</html>

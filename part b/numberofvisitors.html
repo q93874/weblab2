@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Count Visitors</title>
+</head>
+<body>
+  <button id="visitButton">Visit</button>
+  <div id="visitorCount">Number of visitors: 0</div>
+
+  <script>
+    var visitButton = document.getElementById("visitButton");
+    var visitorCountDiv = document.getElementById("visitorCount");
+
+    visitButton.addEventListener("click", function() {
+      var visitorCount = parseInt(visitorCountDiv.innerText.match(/\d+/)[0]);
+      visitorCount++;
+      visitorCountDiv.innerText = "Number of visitors: " + visitorCount;
+    });
+  </script>
+</body>
+</html>

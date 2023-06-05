@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Caesar Cipher Encryption</title>
+</head>
+<body>
+  <input type="text" id="inputText" placeholder="Enter the text to encrypt">
+  <input type="number" id="shiftPattern" placeholder="Enter the shift pattern">
+  <button id="encryptButton">Encrypt</button>
+  <div id="output"></div>
+
+  <script>
+    var encryptButton = document.getElementById("encryptButton");
+    var inputText = document.getElementById("inputText");
+    var shiftPattern = document.getElementById("shiftPattern");
+    var outputDiv = document.getElementById("output");
+
+    encryptButton.addEventListener("click", function() {
+      var plaintext = inputText.value;
+      var shift = parseInt(shiftPattern.value);
+      var ciphertext = caesarCipherEncrypt(plaintext, shift);
+      outputDiv.innerText = "Encrypted text: " + ciphertext;
+    });
+
+    function caesarCipherEncrypt(text, shift) {
+      var result = "";
+
+      for (var i = 0; i < text.length; i++) {
+        var charCode = text.charCodeAt(i);
+        var encryptedCharCode;
+
+        if (charCode >= 65 && charCode <= 90) {
+          // Uppercase letters
+          encryptedCharCode = ((charCode - 65 + shift) % 26) + 65;
+        } else if (charCode >= 97 && charCode <= 122) {
+          // Lowercase letters
+          encryptedCharCode = ((charCode - 97 + shift) % 26) + 97;
+        } else {
+          // Non-alphabetic characters
+          encryptedCharCode = charCode;
+        }
+
+        result += String.fromCharCode(encryptedCharCode);
+      }
+
+      return result;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multiple Callbacks</title>
+</head>
+<body>
+  <button id="startButton">Start</button>
+  <div id="output"></div>
+
+  <script>
+    var startButton = document.getElementById("startButton");
+    var outputDiv = document.getElementById("output");
+
+    startButton.addEventListener("click", function() {
+      asyncFunction()
+        .then(function(result) {
+          outputDiv.innerText += "First callback function: " + result + "\n";
+          return result * 2;
+        })
+        .then(function(result) {
+          outputDiv.innerText += "Second callback function: " + result + "\n";
+          return result + 10;
+        })
+        .then(function(result) {
+          outputDiv.innerText += "Third callback function: " + result + "\n";
+        })
+        .catch(function(error) {
+          console.error("An error occurred:", error);
+        });
+    });
+
+    function asyncFunction() {
+      return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+          var result = 42;
+          resolve(result);
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Map Example</title>
+</head>
+<body>
+  <button id="setButton">Set Values</button>
+  <button id="getButton">Get Values</button>
+  <div id="output"></div>
+
+  <script>
+    var setButton = document.getElementById("setButton");
+    var getButton = document.getElementById("getButton");
+    var outputDiv = document.getElementById("output");
+
+    setButton.addEventListener("click", function() {
+      var myMap = new Map();
+      myMap.set("name", "John");
+      myMap.set("age", 30);
+      myMap.set("city", "New York");
+      outputDiv.innerText = "Values set in the map.";
+    });
+
+    getButton.addEventListener("click", function() {
+      var myMap = new Map();
+      myMap.set("name", "John");
+      myMap.set("age", 30);
+      myMap.set("city", "New York");
+      var values = "";
+
+      myMap.forEach(function(value, key) {
+        values += key + ": " + value + ", ";
+      });
+
+      outputDiv.innerText = "Values in the map: " + values;
+    });
+  </script>
+</body>
+</html>

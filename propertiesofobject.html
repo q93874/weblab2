@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Object Properties</title>
+</head>
+<body>
+  <button id="listButton">List Properties</button>
+  <div id="output"></div>
+
+  <script>
+    var listButton = document.getElementById("listButton");
+    var outputDiv = document.getElementById("output");
+
+    listButton.addEventListener("click", function() {
+      var student = {
+        name: "Mohan Kumar",
+        Dept: "ISE",
+        id: "056"
+      };
+
+      var properties = "";
+
+      for (var property in student) {
+        properties += student[property] + ", ";
+      }
+
+      outputDiv.innerText = properties;
+    });
+  </script>
+</body>
+</html>

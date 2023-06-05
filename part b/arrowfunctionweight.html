@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Convert Kg to Lbs</title>
+</head>
+<body>
+  <input type="number" id="weightInput" placeholder="Enter weight in Kg">
+  <button id="convertButton">Convert</button>
+  <div id="output"></div>
+
+  <script>
+    var convertButton = document.getElementById("convertButton");
+    var weightInput = document.getElementById("weightInput");
+    var outputDiv = document.getElementById("output");
+
+    convertButton.addEventListener("click", function() {
+      var weightKg = parseFloat(weightInput.value);
+      var result = convertKgToLbs(weightKg);
+      outputDiv.innerText = "Result: " + result;
+    });
+
+    var convertKgToLbs = weightKg => {
+      var weightLbs = weightKg * 2.2;
+
+      if (weightLbs > 150) {
+        return "obese";
+      } else if (weightLbs >= 100 && weightLbs <= 150) {
+        return "you are ok";
+      } else {
+        return "underweight";
+      }
+    };
+  </script>
+</body>
+</html>

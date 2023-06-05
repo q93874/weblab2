@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Email Validation</title>
+</head>
+<body>
+  <input type="text" id="emailInput" placeholder="Enter email">
+  <button id="validateButton">Validate</button>
+  <div id="output"></div>
+
+  <script>
+    var validateButton = document.getElementById("validateButton");
+    var emailInput = document.getElementById("emailInput");
+    var outputDiv = document.getElementById("output");
+
+    validateButton.addEventListener("click", function() {
+      var email = emailInput.value;
+      var isValid = validateEmail(email);
+
+      if (isValid) {
+        outputDiv.innerText = "Valid email";
+      } else {
+        outputDiv.innerText = "Invalid email";
+      }
+    });
+
+    var validateEmail = email => {
+      var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      return emailRegex.test(email);
+    };
+  </script>
+</body>
+</html>

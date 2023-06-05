@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Set vs Array</title>
+</head>
+<body>
+  <button id="setButton">Set Example</button>
+  <button id="arrayButton">Array Example</button>
+  <div id="output"></div>
+
+  <script>
+    var setButton = document.getElementById("setButton");
+    var arrayButton = document.getElementById("arrayButton");
+    var outputDiv = document.getElementById("output");
+
+    setButton.addEventListener("click", function() {
+      var mySet = new Set();
+      mySet.add("value1");
+      mySet.add("value2");
+      mySet.add("value3");
+
+      outputDiv.innerText = "Set: " + mySet.has("value2");
+    });
+
+    arrayButton.addEventListener("click", function() {
+      var myArray = ["value1", "value2", "value3"];
+
+      outputDiv.innerText = "Array: " + myArray.includes("value2");
+    });
+  </script>
+</body>
+</html>

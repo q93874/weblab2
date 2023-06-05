@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Split String</title>
+</head>
+<body>
+  <input type="text" id="inputText" placeholder="Enter a string">
+  <button id="splitButton">Split</button>
+  <div id="output"></div>
+
+  <script>
+    var splitButton = document.getElementById("splitButton");
+    var inputText = document.getElementById("inputText");
+    var outputDiv = document.getElementById("output");
+
+    splitButton.addEventListener("click", function() {
+      var input = inputText.value;
+      var words = splitString(input);
+      outputDiv.innerText = "Array of words: " + words;
+    });
+
+    function splitString(str) {
+      return str.split(" ");
+    }
+  </script>
+</body>
+</html>

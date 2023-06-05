@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Alphabetical Order</title>
+</head>
+<body>
+  <input type="text" id="inputText" placeholder="Enter a string">
+  <button id="sortButton">Sort</button>
+  <div id="output"></div>
+
+  <script>
+    var sortButton = document.getElementById("sortButton");
+    var inputText = document.getElementById("inputText");
+    var outputDiv = document.getElementById("output");
+
+    sortButton.addEventListener("click", function() {
+      var input = inputText.value;
+      var sortedString = input.split("").sort().join("");
+      outputDiv.innerText = sortedString;
+    });
+  </script>
+</body>
+</html>

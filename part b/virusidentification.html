@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Martian Virus Identification</title>
+</head>
+<body>
+  <input type="text" id="virusInput" placeholder="Enter virus composition">
+  <input type="text" id="bloodInput" placeholder="Enter blood composition">
+  <button id="identifyButton">Identify</button>
+  <div id="output"></div>
+
+  <script>
+    var identifyButton = document.getElementById("identifyButton");
+    var virusInput = document.getElementById("virusInput");
+    var bloodInput = document.getElementById("bloodInput");
+    var outputDiv = document.getElementById("output");
+
+    identifyButton.addEventListener("click", function() {
+      var virusComposition = virusInput.value;
+      var bloodComposition = bloodInput.value;
+      var isPositive = isPersonPositive(virusComposition, bloodComposition);
+
+      if (isPositive) {
+        outputDiv.innerText = "POSITIVE";
+      } else {
+        outputDiv.innerText = "NEGATIVE";
+      }
+    });
+
+    var isPersonPositive = (virusComposition, bloodComposition) => {
+      var i = 0;
+      var j = 0;
+
+      while (i < virusComposition.length && j < bloodComposition.length) {
+        if (virusComposition[i] === bloodComposition[j]) {
+          i++;
+          j++;
+        } else {
+          i++;
+        }
+      }
+
+      if (j === bloodComposition.length) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+  </script>
+</body>
+</html>

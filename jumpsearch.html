@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jump Search</title>
+</head>
+<body>
+  <input type="number" id="keyInput" placeholder="Enter the key">
+  <input type="text" id="numbersInput" placeholder="Enter the list of numbers">
+  <button id="searchButton">Search</button>
+  <div id="output"></div>
+
+  <script>
+    var searchButton = document.getElementById("searchButton");
+    var keyInput = document.getElementById("keyInput");
+    var numbersInput = document.getElementById("numbersInput");
+    var outputDiv = document.getElementById("output");
+
+    searchButton.addEventListener("click", function() {
+      var key = parseInt(keyInput.value);
+      var numbers = numbersInput.value.split(",").map(Number);
+      var result = jumpSearch(key, numbers);
+
+      if (result == -1) {
+        outputDiv.innerText = "Key not found";
+      } else {
+        outputDiv.innerText = "Key found at index " + result;
+      }
+    });
+
+    function jumpSearch(key, array) {
+      var n = array.length;
+      var step = Math.floor(Math.sqrt(n));
+      var prev = 0;
+
+      while (array[Math.min(step, n) - 1] < key) {
+        prev = step;
+        step += Math.floor(Math.sqrt(n));
+        if (prev >= n) {
+          return -1;
+        }
+      }
+
+      while (array[prev] < key) {
+        prev++;
+        if (prev == Math.min(step, n)) {
+          return -1;
+        }
+      }
+
+      if (array[prev] == key) {
+        return prev;
+      }
+
+      return -1;
+    }
+  </script>
+</body>
+</html>

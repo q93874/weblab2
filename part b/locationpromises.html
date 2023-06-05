@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Check User Location</title>
+</head>
+<body>
+  <button id="locationButton">Check Location</button>
+  <div id="output"></div>
+
+  <script>
+    var locationButton = document.getElementById("locationButton");
+    var outputDiv = document.getElementById("output");
+
+    locationButton.addEventListener("click", function() {
+      checkLocation("Paris")
+        .then(function() {
+          outputDiv.innerText = "Let's take a trip to Paris";
+        })
+        .catch(function(error) {
+          outputDiv.innerText = "Invalid Location";
+          console.error(error);
+        });
+    });
+
+    function checkLocation(location) {
+      return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+          if (location === "Paris") {
+            resolve();
+          } else {
+            reject("Invalid location");
+          }
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

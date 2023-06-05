@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Set Example</title>
+</head>
+<body>
+  <button id="addButton">Add Values</button>
+  <button id="retrieveButton">Retrieve Values</button>
+  <div id="output"></div>
+
+  <script>
+    var addButton = document.getElementById("addButton");
+    var retrieveButton = document.getElementById("retrieveButton");
+    var outputDiv = document.getElementById("output");
+
+    addButton.addEventListener("click", function() {
+      var mySet = new Set();
+      mySet.add(1);
+      mySet.add("Hello");
+      mySet.add(true);
+      outputDiv.innerText = "Values added to the set.";
+    });
+
+    retrieveButton.addEventListener("click", function() {
+      var mySet = new Set();
+      mySet.add(1);
+      mySet.add("Hello");
+      mySet.add(true);
+      var values = "";
+
+      mySet.forEach(function(value) {
+        values += value + ", ";
+      });
+
+      outputDiv.innerText = "Values in the set: " + values;
+    });
+  </script>
+</body>
+</html>
