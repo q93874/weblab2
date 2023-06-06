@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Disarium Numbers</title>
+</head>
+<body>
+    <h1>Disarium Numbers</h1>
+    <p id="output"></p>
+
+    <script>
+        const isDisarium = (n) => {
+            let sum = 0;
+            let digits = n.toString().split("");
+            for (let i = 0; i < digits.length; i++) {
+                sum += Math.pow(parseInt(digits[i]), i + 1);
+            }
+            return sum === n;
+        }
+
+        let output = "";
+        for (let i = 1; i <= 100; i++) {
+            if (isDisarium(i)) {
+                output += i + " ";
+            }
+        }
+
+        document.getElementById("output").innerHTML = output;
+    </script>
+</body>
+</html>
